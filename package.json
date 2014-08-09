@@ -1,0 +1,24 @@
+{
+  "name": "Simple",
+  "version": "0.0.2",
+  "description": "Simple Site Boilerplate w/ Gulp",
+  "author": "Justin Parker",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp-uglify": "^0.3.1",
+    "gulp-notify": "^1.4.2",
+    "gulp": "^3.8.7",
+    "gulp-ruby-sass": "^0.7.1",
+    "gulp-csso": "^0.2.9",
+    "gulp-webpack": "^0.3.0",
+    "browser-sync": "^1.3.3",
+    "gulp-clean": "^0.3.1",
+    "gulp-util": "^3.0.0",
+    "gulp-if": "^1.2.4",
+    "gulp-autoprefixer": "0.0.8",
+    "gulp-concat": "^2.3.4",
+    "run-sequence": "^0.3.6",
+    "gulp-rev-all": "^0.6.2",
+    "gulp-inject": "^1.0.1"
+  }
+}

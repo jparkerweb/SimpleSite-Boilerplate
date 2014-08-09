@@ -1,0 +1,26 @@
+// header
+.hero {
+	background: $color--header-bg;
+	padding: 40px;
+	margin: 0;
+	text-align: center;
+	font-size: 7.0rem;
+	color: $color--header-text;
+	overflow: hidden;
+	&:before {
+		content: '';
+		height: 100%;
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: -.25em;
+	}
+	.container {
+		vertical-align: middle;
+		display: inline-block;
+	}
+}
+
+// stickynav
+body.nav-fixed-top .hero { 
+	visibility: hidden; 
+}

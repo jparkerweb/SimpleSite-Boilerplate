@@ -1,0 +1,16 @@
+//-colors-
+$color--header-bg: #1ccacd;
+$color--header-text: rgba(255,255,255,0.8);
+
+$color--nav-bg: #f7f7f7;
+$color--nav-link: darken($color--header-bg, 15%);
+$color--nav-link-hover: darken($color--header-bg, 30%);
+
+$color--nav-fixed-bg: $color--header-bg;
+$color--nav-fixed-link: rgba(255,255,255,0.9);
+$color--nav-fixed-link-hover: rgba(255,255,255,0.9);
+
+$color--main-bg: white;
+$color--main-text: #333;
+$color--main-link: darken($color--header-bg, 10%);
+$color--main-link-hover: darken($color--header-bg, 20%);

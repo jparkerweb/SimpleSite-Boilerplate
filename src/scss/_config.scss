@@ -1,0 +1,54 @@
+// config
+
+html {
+	height: 100%;
+	font-size: 62.5%;
+	// @media screen and (min-width: 1000px){
+	// 	font-size: 62.5%;
+	// }	
+	// @media screen and (min-width: 920px){
+	// 	font-size: 58.5%;
+	// }	
+	// @media screen and (min-width: 860px){
+	// 	font-size: 50.5%;
+	// }	
+	// @media screen and (min-width: 800px){
+	// 	font-size: 40.5%;
+	// }	
+}
+body {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	font-size: 2.2rem;
+	font-family: $font--hind;
+	font-weight: 400;
+	color: $color--main-text;
+	scroll-behavior: smooth;
+}
+a {
+	text-decoration: none;
+	color: $color--main-link;
+	text-transform: uppercase;
+	transition: color .35s ease;
+	&:visited {
+		color: $color--main-link;
+	}
+	&:hover, &:focus {
+		outline: 0;
+		color: $color--main-link-hover;
+	}
+}
+.container {
+	max-width: 960px;
+	width: 90%;
+	margin: 0 auto;
+}
+
+
+.browsehappy {
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
+}
