@@ -16,4 +16,5 @@ Simple Boilerplate Site -  Single Page, Owl Carousel, Smooth Scroll, Gulp workfl
 ##demo
 example output created in the `dist` directory:
 
-[http://jparkerweb.github.io/SimpleSite-One](DEMO SITE)
+
+[http://jparkerweb.github.io/SimpleSite-One/](DEMO SITE)
