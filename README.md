@@ -3,7 +3,7 @@ SimpleSite-One
 
 Simple Boilerplate Site -  Single Page, Owl Carousel, Smooth Scroll, Gulp workflow with sass, autoprefix, js, webpack, browser-sync and cache busting
 
-##usage
+##Usage
 * run `npm install'
 * requires ruby sass (look at the sass lang install site for install instructions: http://sass-lang.com/install)
 * run:
@@ -13,7 +13,7 @@ Simple Boilerplate Site -  Single Page, Owl Carousel, Smooth Scroll, Gulp workfl
 
 ----
 
-##demo
+##Demo
 example output created in the `dist` directory:
 
 [DEMO SITE OUTPUT](http://jparkerweb.github.io/SimpleSite-One/)
