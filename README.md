@@ -14,7 +14,7 @@ example output created in the `dist` directory:
 
 
 ##Usage
-* run `npm install'
+* run `npm install`
 * requires ruby sass (look at the sass lang install site for install instructions: http://sass-lang.com/install)
 * run:
   * `gulp` (dev mode which will compile all assets and put them in the build directory unminified as well start spin up browser-sync with live reload functionality and watch for any changes)
