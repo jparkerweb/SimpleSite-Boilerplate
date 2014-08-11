@@ -2,7 +2,8 @@
 // ===             Require                ===
 // ==========================================
 	var browserSync = require('browser-sync'),
-		runSequence = require('run-sequence');
+		runSequence = require('run-sequence'),
+		args = require('yargs').argv;
 
 	var gulp = require('gulp');
 
@@ -27,6 +28,9 @@
 //  the 'build' task will set it to true
 //  while our 'default' task will not minify
 	var doMinify = false;
+	// gather command line args
+	var doTunnel = false;
+	if (args.tunnel) { doTunnel = true; }
 // ==========================================
 
 
@@ -64,7 +68,8 @@
 		browserSync({
 			server: {
 				baseDir: "build/"
-			}
+			},
+			tunnel: doTunnel
 		});
 	});
 	// reload
@@ -124,21 +129,27 @@
 			['vendor-scripts', 'webpack'],
 			callback);
 	});
-		// clean our build path
+		// -------------------------
+		// -- clean our build path--
+		// -------------------------
 		gulp.task('clean-scripts', function () { 
 			return gulp.src([
 					destPaths.BuildJS + '/**/*.js'
 				], {read: false})
 				.pipe(clean({force: true}));
 		});
+		// ---------------------------
 		// task: concat vendor scripts
+		// ---------------------------
 		gulp.task('vendor-scripts', function() {
 			return gulp.src(sourcePaths.JSVendor)
 				.pipe(concat('1-vendor.js'))
 				.pipe(gulpif(doMinify, uglify()))
 				.pipe(gulp.dest(destPaths.BuildJS));
 		});
+		// ------------------------------------------
 		// task: Run Javascript files through Webpack
+		// ------------------------------------------
 		gulp.task('webpack', function() {
 			console.log(sourcePaths.JSBase + '/app.js');
 			return gulp.src([sourcePaths.JSBase + '/app.js'])
@@ -168,14 +179,18 @@
 			'build-html',
 			callback);
 	});
-		// clean our build path
+		// -------------------------
+		// -- clean our build path--
+		// -------------------------
 		gulp.task('clean-html', function () { 
 			return gulp.src([
 					destPaths.BuildHTML
 				], {read: false})
 				.pipe(clean({force: true}));
 		});
+		// -----------------------------------------------------
 		// inject our built css and js source into our html file
+		// -----------------------------------------------------
 		gulp.task('build-html', function() {
 			var target = gulp.src(sourcePaths.HTML);
 			var sources = gulp.src([
@@ -199,7 +214,9 @@
 // ==========================================
 // ===               DIST                 ===
 // ==========================================
+	// ------------------------------------
 	// process files into our `dist` folder
+	// ------------------------------------
 	gulp.task('dist', function (callback) {
 		runSequence(
 			'build',
@@ -208,7 +225,9 @@
 			'dist-html',
 			callback);
 	});
-		// clean our build path
+		// -------------------------
+		// -- clean our build path--
+		// -------------------------
 		gulp.task('clean-dist', function () {  
 			return gulp.src([
 					destPaths.DistBase + '/**/*.css',
@@ -217,7 +236,9 @@
 				], {read: false})
 				.pipe(clean({force: true}));
 		});
-		// chache bust css
+		// -------------------------
+		// --    cache bust css   --
+		// -------------------------
 		gulp.task('dist-css', function () {
 			var revall = require('gulp-rev-all'); 
 			return gulp.src([
@@ -226,7 +247,9 @@
 				.pipe(revall())
 				.pipe(gulp.dest(destPaths.DistCSS));	
 		});
-		// cache bust js
+		// -------------------------
+		// --    cache bust js    --
+		// -------------------------
 		gulp.task('dist-js', function () {
 			var revall = require('gulp-rev-all');
 			return gulp.src([
@@ -235,12 +258,16 @@
 				.pipe(revall())
 				.pipe(gulp.dest(destPaths.DistJS));	
 		});	
-		// copy over favicon
+		// -------------------------
+		// --  copy over favicon  --
+		// -------------------------
 		gulp.task('favicon-dist', function(callback){
 			return gulp.src(sourcePaths.Base + '/favicon.ico')
 				.pipe(gulp.dest(destPaths.DistBase))
-		});		
-		// create dist assets
+		});
+		// -------------------------
+		// --  create dist assets --
+		// -------------------------
 		gulp.task('dist-html', function () {
 			var target = gulp.src(sourcePaths.HTML);
 			var sources = gulp.src([

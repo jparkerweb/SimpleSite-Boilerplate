@@ -1,7 +1,10 @@
 
 .body-content {
 	margin: 0;
-	padding: 15px 0;
-	font-size: 1.8rem;
+	font-size: 2.0rem;
 	line-height: 1.38;
+}
+
+[class^='section--'] {
+	padding: 13px 0;
 }

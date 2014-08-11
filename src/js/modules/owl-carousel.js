@@ -11,6 +11,7 @@ function init() {
 		dots: true,
 		items: 1,
 		autoplay: true,
-		autoplayTimeout: 5000
+		autoplayTimeout: 5000,
+		center: true
 	})
 };

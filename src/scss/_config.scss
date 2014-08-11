@@ -3,18 +3,15 @@
 html {
 	height: 100%;
 	font-size: 62.5%;
-	// @media screen and (min-width: 1000px){
-	// 	font-size: 62.5%;
-	// }	
-	// @media screen and (min-width: 920px){
-	// 	font-size: 58.5%;
-	// }	
-	// @media screen and (min-width: 860px){
-	// 	font-size: 50.5%;
-	// }	
-	// @media screen and (min-width: 800px){
-	// 	font-size: 40.5%;
-	// }	
+	@media screen and (max-width: 944px) {  // tablet
+		font-size: 55%;
+	}
+	// @media screen and (max-width: 720px) {  // phablet
+	// 	font-size: 45%;
+	// }
+	// @media screen and (max-width: 480px) {  // phone
+	// 	font-size: 55%;
+	// }
 }
 body {
 	height: 100%;
