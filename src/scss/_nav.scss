@@ -43,9 +43,9 @@ body.nav-fixed-top {
 		border-top: 1px solid $color--nav-bg;
 		border-bottom: 1px solid $color--nav-bg;
 		a {
-			color: white;
+			color: $color--nav-fixed-link;
 			&:visited {
-				color: white;
+				color: $color--nav-fixed-link;
 			}
 			&:hover, &:focus {
 				outline: 0;
