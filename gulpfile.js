@@ -151,7 +151,6 @@
 		// task: Run Javascript files through Webpack
 		// ------------------------------------------
 		gulp.task('webpack', function() {
-			console.log(sourcePaths.JSBase + '/app.js');
 			return gulp.src([sourcePaths.JSBase + '/app.js'])
 				.pipe(webpack({
 					output: { filename: "2-app.js" }
