@@ -1,12 +1,12 @@
-SimpleSite-One
-==============
+SimpleSite-Template
+===================
 
 Simple Boilerplate Site -  Single Page, Owl Carousel, Smooth Scroll, Gulp workflow with sass, autoprefix, js, webpack, browser-sync and cache busting
 
 
 
 ## Demo
-Example output created in the `dist` directory: [Demo Link](http://jparkerweb.github.io/SimpleSite-One/)
+Example output created in the `dist` directory: [Demo Link](http://jparkerweb.github.io/SimpleSite-Template/)
 
 
 ## Usage
