@@ -69,7 +69,8 @@
 			server: {
 				baseDir: "build/"
 			},
-			tunnel: doTunnel
+			tunnel: doTunnel,
+			ghostMode: false //do not mirror clicks, scroll, and forms on all connected browsers by default
 		});
 	});
 	// reload
@@ -82,7 +83,7 @@
 
 
 // ==========================================
-// ===              Build                 === 
+// ===              Build                 ===
 // ==========================================
 	// -------------------------
 	// --    task: SASS       --
@@ -94,7 +95,7 @@
 			callback);
 	});
 		// clean our build path
-		gulp.task('clean-sass', function () {  
+		gulp.task('clean-sass', function () {
 			return gulp.src([
 					destPaths.BuildCSS + '/**/*.css'
 				], {read: false})
@@ -116,7 +117,7 @@
 				.pipe(gulpif(doMinify, csso()))
 				.pipe(gulp.dest(destPaths.BuildCSS))
 				.pipe(notify({onLast: true, message: sassCompleteMessage}))
-				.pipe(browserSync.reload({stream:true}));
+				.pipe(browserSync.stream());
 		});
 
 
@@ -132,7 +133,7 @@
 		// -------------------------
 		// -- clean our build path--
 		// -------------------------
-		gulp.task('clean-scripts', function () { 
+		gulp.task('clean-scripts', function () {
 			return gulp.src([
 					destPaths.BuildJS + '/**/*.js'
 				], {read: false})
@@ -165,7 +166,7 @@
 	// -------------------------
 	gulp.task('favicon-build', function(callback){
 		return gulp.src(sourcePaths.Base + '/favicon.ico')
-			.pipe(gulp.dest(destPaths.BuildBase))
+			.pipe(gulp.dest(destPaths.BuildBase));
 	});
 
 
@@ -181,7 +182,7 @@
 		// -------------------------
 		// -- clean our build path--
 		// -------------------------
-		gulp.task('clean-html', function () { 
+		gulp.task('clean-html', function () {
 			return gulp.src([
 					destPaths.BuildHTML
 				], {read: false})
@@ -193,7 +194,7 @@
 		gulp.task('build-html', function() {
 			var target = gulp.src(sourcePaths.HTML);
 			var sources = gulp.src([
-					destPaths.BuildJS + '/**/*.js', 
+					destPaths.BuildJS + '/**/*.js',
 					destPaths.BuildCSS + '/**/*.css'
 				], {read: false});
 			var options = {
@@ -204,7 +205,7 @@
 
 			return target.pipe(inject(sources, options))
 				.pipe(gulp.dest(destPaths.BuildBase))
-				.pipe(browserSync.reload({stream:true}));
+				.pipe(browserSync.stream());
 		});
 // ==========================================
 
@@ -227,7 +228,7 @@
 		// -------------------------
 		// -- clean our build path--
 		// -------------------------
-		gulp.task('clean-dist', function () {  
+		gulp.task('clean-dist', function () {
 			return gulp.src([
 					destPaths.DistBase + '/**/*.css',
 					destPaths.DistBase + '/**/*.js',
@@ -239,12 +240,12 @@
 		// --    cache bust css   --
 		// -------------------------
 		gulp.task('dist-css', function () {
-			var revall = require('gulp-rev-all'); 
+			var revall = require('gulp-rev-all');
 			return gulp.src([
 					destPaths.BuildCSS + '/**/*.css'
 				])
 				.pipe(revall())
-				.pipe(gulp.dest(destPaths.DistCSS));	
+				.pipe(gulp.dest(destPaths.DistCSS));
 		});
 		// -------------------------
 		// --    cache bust js    --
@@ -255,14 +256,14 @@
 					destPaths.BuildJS + '/**/*.js'
 				])
 				.pipe(revall())
-				.pipe(gulp.dest(destPaths.DistJS));	
-		});	
+				.pipe(gulp.dest(destPaths.DistJS));
+		});
 		// -------------------------
 		// --  copy over favicon  --
 		// -------------------------
 		gulp.task('favicon-dist', function(callback){
 			return gulp.src(sourcePaths.Base + '/favicon.ico')
-				.pipe(gulp.dest(destPaths.DistBase))
+				.pipe(gulp.dest(destPaths.DistBase));
 		});
 		// -------------------------
 		// --  create dist assets --
@@ -270,7 +271,7 @@
 		gulp.task('dist-html', function () {
 			var target = gulp.src(sourcePaths.HTML);
 			var sources = gulp.src([
-					destPaths.DistJS + '/**/*.js', 
+					destPaths.DistJS + '/**/*.js',
 					destPaths.DistCSS + '/**/*.css'
 				], {read: false});
 			var options = {
