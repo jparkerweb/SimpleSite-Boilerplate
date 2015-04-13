@@ -112,7 +112,14 @@
 			}
 
 			return gulp.src(sourcePaths.SCSS)
-				.pipe(rubySass()).on('error', notify.onError({message: 'sass error: <%= error %>'}))
+				// HACK for rubySass:
+				//'sourcemap=none': true
+				// until pull request #114
+				// https://github.com/sindresorhus/gulp-ruby-sass/pull/114
+				// is merged into gulp-ruby-sass
+				// this hack forces rubysass to not return source maps
+				.pipe(rubySass({ style: 'expanded', 'sourcemap=none': true }))
+					.on('error', notify.onError({ title: "Sass Error" }))
 				.pipe(autoprefixer('last 4 version'))
 				.pipe(gulpif(doMinify, csso()))
 				.pipe(gulp.dest(destPaths.BuildCSS))
